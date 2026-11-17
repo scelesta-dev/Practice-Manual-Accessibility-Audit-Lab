@@ -16,18 +16,13 @@ a {
   color: #8c1d40;
 }
 
-a:focus,
-button:focus,
-input:focus {
-  outline: none;
-}
 
 .site-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 24px;
-  min-width: 980px;
+  flex-wrap: wrap;
   padding: 20px 32px;
   color: #ffffff;
   background: #8c1d40;
@@ -45,9 +40,11 @@ input:focus {
 }
 
 main {
-  width: 980px;
+  width: 100%;
+  max-width: 980px;
   margin: 0 auto;
   padding: 32px;
+  box-sizing: border-box;
 }
 
 .hero {
@@ -86,7 +83,7 @@ button {
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
   gap: 20px;
 }
 
@@ -97,9 +94,10 @@ button {
 }
 
 .card img {
+  display: block;
   width: 100%;
   height: 120px;
-  object-fit: cover;
+  object-fit: contain;
   background: #eeeeee;
 }
 
@@ -146,4 +144,13 @@ table {
 td {
   padding: 10px 12px;
   border: 1px solid #cccccc;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 4px solid #00ffff !important;
+  outline-offset: 4px;
 }
